@@ -38,7 +38,7 @@ if uploaded_file is not None:
             st.subheader("Grayscale Image")
             try:
                 img = Image.open(result["image_info"]["image_path"])
-                st.image(img, caption=result["file_name"], use_container_width=True)
+                st.image(img, caption=result["file_name"], clamp=True)
             except FileNotFoundError:
                 st.error("Could not load generated image.")
 
