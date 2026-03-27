@@ -1,4 +1,3 @@
-
 import tempfile
 import os
 from pathlib import Path
@@ -8,7 +7,6 @@ from PIL import Image
 import matplotlib.pyplot as plt
 
 from app.main import analyze_file
-
 
 st.set_page_config(page_title="Executable Grayscale Analyzer", layout="wide")
 
@@ -21,7 +19,6 @@ st.write(
 uploaded_file = st.file_uploader("Upload an EXE/DLL file", type=["exe", "dll"])
 
 if uploaded_file is not None:
-    # Validate file size (max 50MB)
     if uploaded_file.size > 50 * 1024 * 1024:
         st.error("File size exceeds 50MB limit.")
     else:
@@ -80,6 +77,5 @@ if uploaded_file is not None:
         except Exception as e:
             st.error(f"Analysis failed: {e}")
         finally:
-            # Clean up temporary file
             if temp_path and os.path.exists(temp_path):
                 os.remove(temp_path)
