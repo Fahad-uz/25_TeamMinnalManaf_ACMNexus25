@@ -2,9 +2,9 @@ import tempfile
 import os
 from pathlib import Path
 
+import matplotlib.pyplot as plt
 import streamlit as st
 from PIL import Image
-import matplotlib.pyplot as plt
 
 from app.main import analyze_file
 
@@ -12,8 +12,8 @@ st.set_page_config(page_title="Executable Grayscale Analyzer", layout="wide")
 
 st.title("Executable Grayscale Analyzer")
 st.write(
-    "Upload an executable file to generate a grayscale byte image, extract PE features, "
-    "and compute a simple suspiciousness score."
+    "Upload an executable file to generate a grayscale byte image, "
+    "extract PE features, and compute a simple suspiciousness score."
 )
 
 uploaded_file = st.file_uploader("Upload an EXE/DLL file", type=["exe", "dll"])
@@ -74,8 +74,8 @@ if uploaded_file is not None:
         st.subheader("Explanation")
         st.text(result["explanation"])
 
-        except Exception as e:
-            st.error(f"Analysis failed: {e}")
+    except Exception as e:
+        st.error(f"Analysis failed: {e}")
         finally:
             if temp_path and os.path.exists(temp_path):
                 os.remove(temp_path)
