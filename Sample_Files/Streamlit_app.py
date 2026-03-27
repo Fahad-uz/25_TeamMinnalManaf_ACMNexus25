@@ -8,7 +8,7 @@ from PIL import Image
 
 from app.main import analyze_file
 
-st.set_page_config(page_title="Executable Grayscale Analyzer", layout="wide")
+st.image(img, caption=result["file_name"], use_container_width=True)
 
 st.title("Executable Grayscale Analyzer")
 st.write(
